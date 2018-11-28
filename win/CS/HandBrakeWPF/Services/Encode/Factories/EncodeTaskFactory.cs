@@ -89,7 +89,7 @@ namespace HandBrakeWPF.Services.Encode.Factories
         /// </returns>
         private static Source CreateSource(EncodeTask job, HBConfiguration configuration)
         {
-            Range range = new Range();
+            var range = new HandBrake.Interop.Interop.Json.Encode.Range();
             switch (job.PointToPointMode)
             {
                 case PointToPointMode.Chapters:
@@ -146,7 +146,7 @@ namespace HandBrakeWPF.Services.Encode.Factories
                 },
                 ChapterMarkers = job.IncludeChapterMarkers,
                 AlignAVStart = job.AlignAVStart,
-                Mux = EnumHelper<OutputFormat>.GetShortName(job.OutputFormat), 
+                Mux = EnumHelper<OutputFormat>.GetShortName(job.OutputFormat),
                 ChapterList = new List<Chapter>()
             };
 
@@ -468,7 +468,7 @@ namespace HandBrakeWPF.Services.Encode.Factories
                                                 };
                         filter.FilterList.Add(filterItem);
                     }
-                }    
+                }
             }
 
             // Denoise

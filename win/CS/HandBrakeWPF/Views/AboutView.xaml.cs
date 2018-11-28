@@ -24,7 +24,7 @@ namespace HandBrakeWPF.Views
         /// </summary>
         public AboutView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         /// <summary>
@@ -36,19 +36,10 @@ namespace HandBrakeWPF.Views
         /// <param name="e">
         /// The e.
         /// </param>
-        private void HandbrakeWebsite_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start("https://handbrake.fr");
-        }
+        private void HandbrakeWebsite_OnRequestNavigate(object sender, RequestNavigateEventArgs e) => Process.Start(new ProcessStartInfo { FileName = "https://handbrake.fr", UseShellExecute = true });
 
-        private void GithubWebsite_OnRequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            Process.Start("https://github.com/HandBrake/HandBrake/issues");
-        }
+        private void GithubWebsite_OnRequestNavigate(object sender, RequestNavigateEventArgs e) => Process.Start(new ProcessStartInfo { FileName = "https://github.com/HandBrake/HandBrake/issues", UseShellExecute = true });
 
-        private void AboutTextBox_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            this.versionTextBox.SelectAll();
-        }
+        private void AboutTextBox_OnMouseDoubleClick(object sender, MouseButtonEventArgs e) => versionTextBox.SelectAll();
     }
 }
